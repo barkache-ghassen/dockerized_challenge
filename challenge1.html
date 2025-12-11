@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Web3 Challenger – Crypto Hero</title>
+<style>
+    body {
+        background: white;
+        color: black;
+        font-family: Arial, sans-serif;
+        padding: 0;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    /* HEADER / TOP NAV */
+    .header {
+        width: 100%;
+        background: white;
+        color: black;
+        padding: 15px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end; /* RIGHT ALIGN */
+        flex-wrap: wrap; /* Wrap if screen is small */
+        box-shadow: 0 0 10px rgba(0,0,0,0.15);
+        gap: 10px;
+        box-sizing: border-box;
+    }
+
+    .nav-buttons {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap; /* Wrap buttons if needed */
+    }
+
+    .nav-buttons button {
+        background: transparent;
+        border: 2px solid #4CAF50;
+        color: black;
+        padding: 6px 12px; /* Reduced padding */
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.25s ease;
+        transform: scale(1);
+        white-space: nowrap;
+    }
+
+    .nav-buttons button:hover {
+        background: #4CAF50;
+        color: white;
+        transform: scale(1.07);
+    }
+
+    /* MAIN CONTENT */
+    .main-container {
+        padding: 30px;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .card {
+        background: #f2f2f2;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.08);
+        color: black;
+    }
+
+    h1 {
+        color: #4CAF50;
+    }
+
+    .input {
+        width: 70%;
+        padding: 10px;
+        border-radius: 6px;
+        border: 2px solid #444;
+        outline: none;
+        margin-top: 10px;
+        transition: border-color 0.5s, background-color 0.5s;
+        background-color: white;
+        color: black;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        background: #4CAF50;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background 0.3s;
+    }
+
+    .btn:hover {
+        background: #45a049;
+    }
+
+    .xp-bar-container {
+        width: 100%;
+        background: #ccc;
+        height: 25px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    .xp-bar {
+        height: 100%;
+        width: 0%;
+        background: #4CAF50;
+        border-radius: 10px;
+        transition: width 1s ease-in-out;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+        .nav-buttons button {
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- HEADER TOOLBAR -->
+<div class="header">
+    <div class="nav-buttons">
+        <button>Challenges</button>
+        <button>Learning Path</button>
+        <button>Audit</button>
+        <button>Enterprise Portal</button>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-container">
+<div class="card">
+    <h1>Challenge 1: Crypto Hero</h1>
+    <p>
+        An <b>APT (Advanced Persistent Threat) group</b> has been promoting a fake 
+        “guaranteed return on investment” smart contract.  
+        Thousands of users deposited their crypto believing it would auto-multiply.  
+        But behind the scenes… it was <b>just a Ponzi scheme</b>.
+    </p>
+
+    <p>
+         <b>Can you help web3Challenger to analyze the contract, find the flaw, and retrieve the victims’ funds?</b> </br>
+         <b>Press on challenge button to start the quest on localhost port 8000</b>
+
+    </p>
+
+    <h3>Submit the Flag</h3>
+    <input id="flagInput" class="input" placeholder="Enter your flag...">
+    <br>
+    <button class="btn" onclick="checkFlag()">Submit</button>
+
+    <h3>Your XP</h3>
+    <div class="xp-bar-container">
+        <div id="xpBar" class="xp-bar"></div>
+    </div>
+
+    <br>
+    <button class="btn" onclick="nextChallenge()">Next Challenge</button>
+
+    <br><br>
+
+    <button class="btn" onclick="window.open('http://127.0.0.1:8080','_blank')">
+        Go to Challenge
+    </button>
+
+</div>
+</div>
+
+<script>
+let xp = 0;
+const correctFlag = "W3X{N07_4LL_H3R05_W34R_CAP3S}";
+
+function checkFlag() {
+    const inputField = document.getElementById("flagInput");
+    const userFlag = inputField.value.trim();
+
+    if (userFlag === correctFlag) {
+        xp += 50;
+        document.getElementById("xpBar").style.width = xp + "%";
+
+        inputField.style.backgroundColor = "#4CAF50";
+        inputField.style.color = "#111";
+        inputField.style.borderColor = "#4CAF50";
+
+        setTimeout(() => {
+            inputField.style.backgroundColor = "white";
+            inputField.style.color = "black";
+            inputField.style.borderColor = "#444";
+        }, 1500);
+
+        alert("Correct flag! +50 XP awarded.");
+    } else {
+        inputField.style.borderColor = "#f44336";
+        inputField.style.backgroundColor = "#ffdddd";
+        setTimeout(() => {
+            inputField.style.borderColor = "#444";
+            inputField.style.backgroundColor = "white";
+        }, 500);
+        alert("Incorrect flag — try again.");
+    }
+}
+
+function nextChallenge() {
+    alert("Loading next challenge...");
+}
+</script>
+
+</body>
+</html>
