@@ -12,5 +12,5 @@ you need to run the challenge from within the container:
 ```shell
 docker exec -it <container> /bin/bash
 cd root 
-./run_challnge.sh
+./run_challenge.sh
 ```
