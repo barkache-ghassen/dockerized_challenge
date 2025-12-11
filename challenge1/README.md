@@ -27,6 +27,9 @@ or run python3 server on any desired port
 python3 -m http.server 8080
 ```
 
+or run ./run_challenge.sh to intiate the project
+
+
 happy hacking !!!!
 
 
